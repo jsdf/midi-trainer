@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.redbox {
+  background-color: red;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.console {
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 12px;
+  overflow: auto;
+}
+.console .error {
+  background-color: red;
+}
+.console .warn {
+  background-color: orange;
+}
+
+.console-log-arg {
+  display: inline-block;
+  padding-right: 4px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
