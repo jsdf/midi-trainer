@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./Exercise.css";
-import Autocomplete from "@mui/joy/Autocomplete";
+import ParamSelector from "./ParamSelector";
 import ScaleType from "@tonaljs/scale-type";
 import * as Scale from "@tonaljs/scale";
 import { KeyParam, ScaleParam } from "./AppState";
@@ -9,33 +9,6 @@ import PianoKeyboard from "./PianoKeyboard";
 import { InstrumentContext } from "./Instrument";
 
 const keys = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
-function ParamSelector(props: {
-  param: {
-    Context: React.Context<{
-      value: string;
-      setValue: (value: string) => void;
-    }>;
-  };
-  options: string[];
-}) {
-  const { value: key, setValue: setKey } = React.useContext(
-    props.param.Context
-  );
-  return (
-    <Autocomplete
-      options={props.options}
-      getOptionLabel={(option) => option}
-      value={key}
-      onChange={(_, value) => {
-        if (value == null) {
-          return;
-        }
-        setKey(value);
-      }}
-    />
-  );
-}
 
 export default function Exercise() {
   const [key] = useParam(KeyParam);
@@ -46,8 +19,14 @@ export default function Exercise() {
   const scalePitchClasses = scaleDef.notes;
   return (
     <>
-      <ParamSelector param={KeyParam} options={keys} />
-      <ParamSelector param={ScaleParam} options={ScaleType.names()} />
+      <div className="Exercise__controls">
+        <ParamSelector label="Key" param={KeyParam} options={keys} />
+        <ParamSelector
+          label="Scale"
+          param={ScaleParam}
+          options={ScaleType.names()}
+        />
+      </div>
 
       <PianoKeyboard
         highlightKeys={[] as string[]}

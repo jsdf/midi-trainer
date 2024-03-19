@@ -1,2 +1,12 @@
 .Exercise {
 }
+
+.Exercise__controls {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+}
+
+.Exercise__controls > * {
+  margin: 0 5px;
+}
